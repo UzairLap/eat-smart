@@ -86,17 +86,17 @@ const JourneyPage = ({ handleBackToJourney }) => {
   const chefs = [
     {
       id: 1,
-      name: 'Chef Matteo Rossi',
-      role: 'Executive Chef',
-      specialty: 'Italian Cuisine',
-      image: 'https://images.unsplash.com/photo-1583394293214-28a5b89f5ab0?w=600&h=600&fit=crop&crop=face',
-      bio: 'With over 15 years of experience in Michelin-starred kitchens across Italy and France, Chef Rossi brings authentic Italian passion to every dish.'
+      name: 'Chef Uzair',
+      role: 'Programmer, Hobby Chef',
+      specialty: '8x Hackthon Winner!',
+      image: 'https://media.licdn.com/dms/image/v2/D4E03AQFRdIpWG_GAUQ/profile-displayphoto-shrink_800_800/B4EZUfFeiPG0Ak-/0/1739983290979?e=1756944000&v=beta&t=fYnWuVRC-I9S-dIhCA5LtUcALdnZo7vL0Aj3kzcpIZ0del',
+      bio: 'B.Tech CSE"27 | 8x Hackathon & Ideathon Winner | Full-Stack Developer | Cybersecurity Enthusiast | Python Expert | App Developer'
     },
     {
       id: 2,
-      name: 'Chef Aria Tanaka',
-      role: 'Pastry Chef',
-      specialty: 'Sugar Artist',
+      name: 'Chef Tejal',
+      role: 'Frontend dev, Great Master Cheft!',
+      specialty: 'Many cool projects and clones! intern',
       image: 'https://images.unsplash.com/photo-1594736797933-d0301ba2fe65?w=600&h=600&fit=crop&crop=face',
       bio: 'A master of molecular gastronomy and traditional Japanese confectionery, Chef Tanaka creates edible art that delights all the senses.'
     },
@@ -780,7 +780,25 @@ const ChefModal = ({ chef, onClose }) => {
           <h2 className="text-4xl font-light text-white mb-2">{chef.name}</h2>
           <p className="text-amber-400 text-xl font-medium mb-1">{chef.role}</p>
           <p className="text-gray-300 text-lg mb-6">{chef.specialty}</p>
-          <p className="text-gray-200 leading-relaxed">{chef.bio}</p>
+          <p className="text-gray-200 leading-relaxed mb-8">{chef.bio}</p>
+          
+          {/* LinkedIn Profile Button */}
+          <a
+            href={`https://www.linkedin.com/in/uzair-md-4507892ba/`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-6 py-3 bg-gray-800 hover:bg-gray-700 text-amber-400 border border-amber-400/30 rounded-xl transition-all duration-300 hover:border-amber-400/60 group"
+          >
+            {/* LinkedIn Icon */}
+            <svg
+              className="w-5 h-5 mr-3 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            Visit LinkedIn Profile
+          </a>
         </div>
       </motion.div>
     </motion.div>
