@@ -89,15 +89,15 @@ const JourneyPage = ({ handleBackToJourney }) => {
       name: 'Chef Uzair',
       role: 'Programmer, Hobby Chef',
       specialty: '8x Hackthon Winner!',
-      image: 'https://media.licdn.com/dms/image/v2/D4E03AQFRdIpWG_GAUQ/profile-displayphoto-shrink_800_800/B4EZUfFeiPG0Ak-/0/1739983290979?e=1756944000&v=beta&t=fYnWuVRC-I9S-dIhCA5LtUcALdnZo7vL0Aj3kzcpIZ0del',
+      image: 'https://res.cloudinary.com/dlkbbm0bj/image/upload/v1754138418/pfp_1_bcqvo3.jpg',
       bio: 'B.Tech CSE"27 | 8x Hackathon & Ideathon Winner | Full-Stack Developer | Cybersecurity Enthusiast | Python Expert | App Developer'
     },
     {
       id: 2,
       name: 'Chef Tejal',
-      role: 'Frontend dev, Great Master Cheft!',
+      role: 'Frontend dev, Great Master Chef!',
       specialty: 'Many cool projects and clones! intern',
-      image: 'https://images.unsplash.com/photo-1594736797933-d0301ba2fe65?w=600&h=600&fit=crop&crop=face',
+      image: 'https://res.cloudinary.com/dlkbbm0bj/image/upload/v1754138952/tj_pfp_aannoh.jpg',
       bio: 'A master of molecular gastronomy and traditional Japanese confectionery, Chef Tanaka creates edible art that delights all the senses.'
     },
     {
