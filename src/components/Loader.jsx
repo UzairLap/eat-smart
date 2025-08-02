@@ -277,38 +277,14 @@ const Loader = ({ onComplete }) => {
                 {/* Subtitle */}
 <motion.p
   initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }} // Changed to full opacity
+  animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 1.5, duration: 1 }}
-  className="relative inline-block"
+  className="font-bold text-amber-400 text-lg md:text-xl tracking-[0.4em] uppercase"
   style={{
     fontFamily: '"Inter", system-ui, -apple-system, sans-serif'
   }}
 >
-  <span className="
-    font-bold 
-    text-amber-400 // Changed to amber color
-    text-lg md:text-xl 
-    tracking-[0.4em] 
-    uppercase 
-    relative
-    z-10
-  ">
-    Eat Smart
-  </span>
-  <motion.span
-    initial={{ scaleX: 0 }}
-    animate={{ scaleX: 1 }}
-    transition={{ delay: 2, duration: 0.8, ease: "easeOut" }}
-    className="
-      absolute 
-      bottom-0 
-      left-0 
-      w-full 
-      h-2 
-      bg-amber-400/30 
-      origin-left
-    "
-  />
+  Eat Smart
 </motion.p>
                 
                 <motion.p
