@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { useNavigate } from "react-router-dom";
 // PageTransition Component
 const PageTransition = ({ isTransitioning, onComplete, selectedMood }) => {
   const [phase, setPhase] = useState('expand'); // 'expand' | 'shrink'
@@ -181,7 +181,8 @@ const Journey = ({ selectedMood }) => {
 };
 
 // Updated MoodSelector Component
-const MoodSelector = ({ onStartJourney }) => {
+const MoodSelector = ({ onJourneyStart  }) => {
+
   const [selectedMood, setSelectedMood] = useState(null);
   const [showJourneyButton, setShowJourneyButton] = useState(false);
   const [currentBackground, setCurrentBackground] = useState('from-purple-400 via-pink-500 to-red-500');
@@ -228,7 +229,7 @@ const MoodSelector = ({ onStartJourney }) => {
   };
 
   const handleJourneyStart = () => {
-    onStartJourney(selectedMood);
+    onJourneyStart(selectedMood);
   };
 
   const containerVariants = {
@@ -545,4 +546,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default MoodSelector;
