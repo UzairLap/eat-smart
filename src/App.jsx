@@ -4,6 +4,7 @@ import Loader from './components/Loader';
 import MoodSelector from './components/MoodSelector';
 import JourneyPage from './components/JourneyPage';
 // import ShowcasePage from './components/ShowcasePage';
+import CursorTrail from './components/CursorTrail';
 import ImageGrid from './components/ImageGrid';
 
 function App() {
@@ -109,7 +110,10 @@ function App() {
         {showLoader ? (
           <Loader key="loader" />
         ) : showJourney ? (
-          <JourneyPage key="journey" selectedMood={selectedMood} handleBackToJourney={handleBackToJourney} />
+          <>
+            <CursorTrail />
+            <JourneyPage key="journey" selectedMood={selectedMood} handleBackToJourney={handleBackToJourney} />
+          </>
         ) : (
           <MoodSelector key="mood-selector" onJourneyStart={handleJourneyStart} />
         )}
