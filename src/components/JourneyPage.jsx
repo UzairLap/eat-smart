@@ -1,6 +1,113 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
+// Navbar Component
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <>
+      <motion.nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500`}
+        initial={{ y: -100 }}
+        animate={{ 
+          y: 0,
+          backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.8)' : 'transparent',
+          backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+        }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <motion.div 
+            className="text-amber-400 font-light tracking-wider text-2xl"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
+            EatSmart
+          </motion.div>
+
+          <motion.button
+            onClick={() => setIsMenuOpen(true)}
+            className="text-gray-300 hover:text-amber-400 transition-colors duration-300"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </motion.button>
+        </div>
+      </motion.nav>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center overflow-hidden"
+            initial={{ opacity: 0, y: '-100%' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '-100%' }}
+            transition={{ type: 'tween', duration: 0.5 }}
+          >
+            <motion.button
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-6 right-6 text-gray-300 hover:text-amber-400"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="text-sm tracking-wider mr-2">CLOSE</span>
+              <svg className="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </motion.button>
+
+            <motion.h2
+              className="text-purple-400 text-xl mb-12 font-light tracking-wider"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              Discover Culinary Excellence
+            </motion.h2>
+
+            <nav className="flex flex-col items-center space-y-8">
+              {['About Us', 'Works', 'Chefs', 'Contact'].map((item, index) => (
+                <motion.a
+                  key={item}
+                  href={`#${item.toLowerCase().replace(' ', '-')}`}
+                  className="text-4xl md:text-5xl text-white font-bold tracking-wide hover:text-amber-400 relative group"
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + index * 0.1 }}
+                  onClick={() => setIsMenuOpen(false)}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  {item}
+                  <motion.div
+                    className="absolute -bottom-2 left-0 right-0 h-1 bg-amber-400 origin-left"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.a>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
 const JourneyPage = ({ handleBackToJourney }) => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
@@ -183,6 +290,7 @@ const JourneyPage = ({ handleBackToJourney }) => {
 
   return (
     <div className="bg-black">
+      <Navbar />
       {/* Image Grid Section */}
       <section 
         ref={containerRef}
