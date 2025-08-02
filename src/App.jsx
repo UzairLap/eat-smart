@@ -52,6 +52,11 @@ function App() {
     }
   };
 
+  const handleBackToJourney = () => {
+    setShowJourney(false);
+    setSelectedMood(null);
+  };
+
   return (
     <div className="relative">
       {/* Transition Overlay (Internal) */}
@@ -104,7 +109,7 @@ function App() {
         {showLoader ? (
           <Loader key="loader" />
         ) : showJourney ? (
-          <JourneyPage key="journey" selectedMood={selectedMood} />
+          <JourneyPage key="journey" selectedMood={selectedMood} handleBackToJourney={handleBackToJourney} />
         ) : (
           <MoodSelector key="mood-selector" onJourneyStart={handleJourneyStart} />
         )}

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
-const JourneyPage = ({ handleBackToJourney = () => console.log('Back to Journey clicked') }) => {
+const JourneyPage = ({ handleBackToJourney }) => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
   const [imagesLoaded, setImagesLoaded] = useState({});
@@ -18,7 +18,7 @@ const JourneyPage = ({ handleBackToJourney = () => console.log('Back to Journey 
   const foodImages = [
     {
       id: 1,
-      src: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&h=1200&fit=crop&crop=center',
+      src: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1200&q=80',
       alt: 'Artisan sourdough bread with rustic crust',
       size: 'large',
       category: 'Artisan Breads',
@@ -26,7 +26,7 @@ const JourneyPage = ({ handleBackToJourney = () => console.log('Back to Journey 
     },
     {
       id: 2,
-      src: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&h=400&fit=crop&crop=center',
+      src: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80',
       alt: 'Farm-fresh seasonal vegetables arrangement',
       size: 'medium',
       category: 'Farm to Table',
@@ -34,7 +34,7 @@ const JourneyPage = ({ handleBackToJourney = () => console.log('Back to Journey 
     },
     {
       id: 3,
-      src: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=750&fit=crop&crop=center',
+      src: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=750&q=80',
       alt: 'Handcrafted pasta with heritage grains',
       size: 'tall',
       category: 'Pasta & Grains',
@@ -42,7 +42,7 @@ const JourneyPage = ({ handleBackToJourney = () => console.log('Back to Journey 
     },
     {
       id: 4,
-      src: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=700&h=500&fit=crop&crop=center',
+      src: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&h=500&q=80',
       alt: 'Seasonal comfort food in ceramic bowls',
       size: 'wide',
       category: 'Comfort Food',
@@ -50,7 +50,7 @@ const JourneyPage = ({ handleBackToJourney = () => console.log('Back to Journey 
     },
     {
       id: 5,
-      src: 'https://images.unsplash.com/photo-1563379091339-03246963d96c?w=600&h=800&fit=crop&crop=center',
+      src: 'https://images.unsplash.com/photo-1563379091339-03246963d96c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=800&q=80',
       alt: 'Heritage tomatoes with fresh herbs',
       size: 'medium',
       category: 'Garden Fresh',
@@ -58,7 +58,7 @@ const JourneyPage = ({ handleBackToJourney = () => console.log('Back to Journey 
     },
     {
       id: 6,
-      src: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&h=600&fit=crop&crop=center',
+      src: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
       alt: 'Artisanal cheese and charcuterie selection',
       size: 'wide',
       category: 'Charcuterie',
@@ -66,7 +66,7 @@ const JourneyPage = ({ handleBackToJourney = () => console.log('Back to Journey 
     },
     {
       id: 7,
-      src: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=500&h=700&fit=crop&crop=center',
+      src: 'https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=700&q=80',
       alt: 'Freshly baked pastries with golden crust',
       size: 'tall',
       category: 'Pastries',
@@ -74,7 +74,7 @@ const JourneyPage = ({ handleBackToJourney = () => console.log('Back to Journey 
     },
     {
       id: 8,
-      src: 'https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=600&h=400&fit=crop&crop=center',
+      src: 'https://images.unsplash.com/photo-1565299507177-b0ac66763828?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80',
       alt: 'Modern plating techniques with microgreens',
       size: 'medium',
       category: 'Fine Dining',
@@ -188,12 +188,15 @@ const JourneyPage = ({ handleBackToJourney = () => console.log('Back to Journey 
         ref={containerRef}
         className="min-h-screen bg-black relative overflow-hidden py-20 px-6 md:px-12"
       >
-        {/* Back Button */}
+        {/* Back Button - FIXED */}
         <motion.button
           onClick={() => {
             console.log('Back button clicked');
+            // Check if handleBackToJourney is a function and call it
             if (handleBackToJourney && typeof handleBackToJourney === 'function') {
               handleBackToJourney();
+            } else {
+              console.warn('handleBackToJourney is not a valid function');
             }
           }}
           className="fixed top-8 left-8 z-50 group bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 text-white hover:bg-white/20 transition-all duration-300"
@@ -509,7 +512,7 @@ const ChefsSection = ({ chefs }) => {
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }} />
       </div>
 
