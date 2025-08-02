@@ -28,13 +28,13 @@ const Navbar = () => {
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <motion.div 
-            className="text-amber-400 font-light tracking-wider text-2xl"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
-            EatSmart
-          </motion.div>
+            <motion.div 
+    className="text-amber-400 font-light tracking-wider text-2xl text-center w-full"
+    whileHover={{ scale: 1.05 }}
+    transition={{ duration: 0.2 }}
+  >
+    Eat Smart
+  </motion.div>
 
           <motion.button
             onClick={() => setIsMenuOpen(true)}
@@ -76,7 +76,7 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Discover Culinary Excellence
+              Eat Smart - Pixxel Webathon
             </motion.h2>
 
             <nav className="flex flex-col items-center space-y-8">
@@ -207,14 +207,14 @@ const JourneyPage = ({ handleBackToJourney }) => {
       image: 'https://res.cloudinary.com/dlkbbm0bj/image/upload/v1754138952/tj_pfp_aannoh.jpg',
       bio: 'A master of molecular gastronomy and traditional Japanese confectionery, Chef Tanaka creates edible art that delights all the senses.'
     },
-    {
-      id: 3,
-      name: 'Chef Luis Mendoza',
-      role: 'Farm-to-Table Chef',
-      specialty: 'Sustainable Cuisine',
-      image: 'https://images.unsplash.com/photo-1566554273541-37a9ca77b91b?w=600&h=600&fit=crop&crop=face',
-      bio: 'A pioneer in sustainable cooking, Chef Mendoza works directly with local farmers to create innovative dishes that celebrate seasonal ingredients.'
-    }
+{
+  id: 3,
+  name: 'Chef Luis Mendoza',
+  role: 'Farm-to-Table Chef',
+  specialty: 'Sustainable Cuisine',
+  image: 'https://images.unsplash.com/photo-1600494603989-9650cf6ddd3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=600&q=80',
+  bio: 'A pioneer in sustainable cooking, Chef Mendoza works directly with local farmers to create innovative dishes that celebrate seasonal ingredients.',
+}
   ];
 
   const handleImageLoad = (imageId) => {
